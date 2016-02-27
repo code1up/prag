@@ -1,2 +1,2 @@
-prag
+prag - Pebble.js watch app
 
