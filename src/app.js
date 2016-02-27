@@ -1,4 +1,5 @@
 var UI = require("ui");
+var Voice = require("ui/voice");
 
 var main = new UI.Card({
     title: "RAG Status",
@@ -12,4 +13,14 @@ var main = new UI.Card({
 main.show();
 
 main.on("click", "select", function (e) {
+    // Start a diction session and skip confirmation
+    Voice.dictate('start', false, function (e) {
+        if (e.err) {
+            console.log('Error: ' + e.err);
+            return;
+        }
+
+        main.subtitle('Success: ' + e.transcription);
+    });
+
 });
